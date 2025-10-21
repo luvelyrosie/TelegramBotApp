@@ -2,7 +2,6 @@
 __pycache__/
 *.py[cod]
 *.sqlite3
-*.env
 *.venv
 venv/
 ENV/
@@ -17,14 +16,11 @@ env/
 db.sqlite3
 media/
 staticfiles/
-*.pyc
-*.pyo
 
 # Docker
 *.pid
 *.sock
 docker-compose.override.yml
-.env
 
 # VSCode
 .vscode/
