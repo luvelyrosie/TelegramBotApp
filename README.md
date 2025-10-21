@@ -16,7 +16,7 @@ Telegram-бот: **[@TeamTasksHelperBot](https://t.me/TeamTasksHelperBot)**
 
 ```bash
 git clone https://github.com/luvelyrosie/TelegramBotApp.git
-cd teamtasks
+cd TelegramBotApp
 ```
 
 2. Соберите Docker-контейнеры:
