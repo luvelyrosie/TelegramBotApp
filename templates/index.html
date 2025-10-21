@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Team Tasks{% endblock %}
+
+{% block content %}
+<div class="home-container d-flex flex-wrap justify-content-center align-items-center gap-4 my-5">
+
+    <div class="welcome-card flex-fill" style="min-width: 280px;">
+        <h2>Welcome to the Team Tasks App</h2>
+        <p>Manage tasks in your team efficiently and stay organized!</p>
+    </div>
+
+    {% if bind_info %}
+    <div class="bind-card flex-fill" style="min-width: 280px;">
+        <h3>Hello, {{ bind_info.username }}!</h3>
+        <p><strong>Your Telegram Bind Info:</strong></p>
+        <ul>
+            <li><strong>Telegram ID:</strong> {{ bind_info.telegram_id|default:"Not bound yet" }}</li>
+            <li><strong>Bind Code:</strong> <span class="bind-code">{{ bind_info.bind_code }}</span></li>
+        </ul>
+        <p>For your tasks, visit the <a href="{% url 'tasks:dashboard' %}" class="btn-link">Dashboard</a>.</p>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <div class="welcome-card">
+        <h2>Create Account</h2>
+        <p>Fill in the details to join Team Tasks.</p>
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Register</button>
+        </form>
+        <p style="margin-top:10px;">Already have an account? <a href="{% url 'login' %}" class="btn-link">Login here</a></p>
+    </div>
+</div>
+{% endblock %}

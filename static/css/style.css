@@ -1,0 +1,167 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.home-container .welcome-card,
+.home-container .bind-card {
+    flex: 0 0 360px;
+    max-width: 360px;
+    cursor: pointer;
+}
+
+.card, .welcome-card, .bind-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 25px 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.card:hover, .welcome-card:hover, .bind-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    background-color: #f8f9fa;
+}
+
+.card h4, .welcome-card h2, .bind-card h3 {
+    color: #6c5ce7;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.card p, .welcome-card p, .bind-card p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+input:focus {
+    border-color: #6c5ce7;
+    box-shadow: 0 0 6px rgba(108,92,231,0.3);
+    outline: none;
+}
+
+.btn, button, a.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    background-color: #6c5ce7;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn:hover, button:hover, a.btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(0.9);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.btn-success { background-color: #28a745; }
+.btn-success:hover { background-color: #218838; }
+
+.btn-info { background-color: #17a2b8; }
+.btn-info:hover { background-color: #138496; }
+
+.btn-warning { background-color: #ffc107; color: #212529; }
+.btn-warning:hover { background-color: #e0a800; color: #212529; }
+
+.btn-danger { background-color: #dc3545; }
+.btn-danger:hover { background-color: #c82333; }
+
+.welcome-card button {
+    width: 50%;
+    margin: 12px auto 0;
+}
+
+.btn-link {
+    color: #6c5ce7;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+.btn-link:hover {
+    color: #5941c3;
+    text-decoration: underline;
+}
+
+.task-container {
+    transition: all 0.3s;
+    cursor: pointer;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.task-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    background-color: #f8f9fa;
+}
+
+.card .btn, .card .btn-sm {
+    transition: all 0.3s;
+}
+.card .btn:hover, .card .btn-sm:hover {
+    transform: translateY(-3px);
+    filter: brightness(0.9);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+@media screen and (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .welcome-card, .bind-card {
+        flex: 0 0 90%;
+    }
+    .welcome-card button {
+        width: 70%;
+    }
+    .task-container {
+        margin-bottom: 15px;
+    }
+}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Task List Details{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    {% if messages %}
+    <div class="position-fixed top-0 end-0 m-3" style="z-index: 1055;">
+        {% for message in messages %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>{{ tasklist.name }}</h2>
+        <div>
+            <a href="{% url 'tasks:task_create' tasklist.id %}" class="btn btn-success">Add Task</a>
+            <a href="{% url 'tasks:dashboard' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+
+    {% if tasks %}
+    <div class="row g-3" id="task-list">
+        {% for task in tasks %}
+        <div class="col-md-6" id="task-{{ task.id }}">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ task.title }}</h5>
+                    <p class="card-text">{{ task.description|default:"No description" }}</p>
+                    <p class="mb-1"><strong>Assignee:</strong>
+                        {% if task.assignee %}{{ task.assignee.username }}{% else %}Unassigned{% endif %}
+                    </p>
+                    <p class="mb-1"><strong>Due:</strong> {{ task.due_date|date:"Y-m-d H:i"|default:"No deadline" }}</p>
+                    <p class="mb-1"><strong>Status:</strong> 
+                        <span class="{{ task.is_done|yesno:'text-success,text-warning' }}">
+                            {{ task.is_done|yesno:'Done,Pending' }}
+                        </span>
+                    </p>
+                    <div class="d-flex gap-2 mt-2 flex-wrap">
+                        <a href="{% url 'tasks:task_edit' task.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{% url 'tasks:task_delete' task.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Delete this task?');">Delete</a>
+                        {% if not task.is_done %}
+                        <a href="{% url 'tasks:task_mark_done' task.id %}" class="btn btn-success btn-sm">Mark Done</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No tasks in this list yet.</p>
+    {% endif %}
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const alerts = document.querySelectorAll('.alert');
+    alerts.forEach(alert => {
+        setTimeout(() => {
+            alert.classList.remove('show');
+            alert.classList.add('hide');
+            setTimeout(() => alert.remove(), 500);
+        }, 4000);
+    });
+});
+</script>
+{% endblock %}
